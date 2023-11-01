@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Designated-Hitter/week13-weapon_mastery_node.js#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
   }
 }
