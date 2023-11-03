@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "scott",
+    "password": "tiger",
+    "database": "express_sequelize_init",
+    "host": "ec2-15-165-95-60.ap-northeast-2.compute.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
