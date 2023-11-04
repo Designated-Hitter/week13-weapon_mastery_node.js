@@ -5,13 +5,11 @@ const bcrypt = require("bcrypt");
 const jwt = require(JsonWebToken);
 
 const Index = require("../schemas/index.js");
-const Post = require("../schemas/post.js");
-const Comment = require("../schemas/comment.js");
 
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'scott',
-    database: 'user',
+    database: 'tigerdb',
     password: 'tiger',
     waitForConnections: true,
     connectionLimit: 10,
@@ -28,12 +26,13 @@ router.post("/index/join", async(req, res) => {
     const passwordCheck = req.body.passwordCheck;
     
     //닉네임 중복 검사
+    //이런 구문들을 schemas의 sequelize로 수정해야 할듯
     const [rowsNicknameCheck] = await connection.execute(`SELECT NICKNAME FROM USER WHERE NICKNAME = ?`, [nickname]);
 
     if (rowsNicknameCheck.length) {
         res.json({
             success: false,
-            error: "중복된 닉네임은 사용할 수 없습니다."
+            error: "중복된 닉네임입니다."
         });
     }
 
@@ -50,7 +49,7 @@ router.post("/index/join", async(req, res) => {
     if (password.length < 4) {
         res.json({
             success: false,
-            error: "비밀번호는 4글자 이상이어야 합니다."
+            error: "비밀번호는 4자 이상이어야 합니다."
         })
     }
 
@@ -72,6 +71,7 @@ router.post("/index/join", async(req, res) => {
     const hash = bcrypt.hashSync(password, 10);
     
     //DB에 삽입
+    //이런 구문들을 schemas의 sequelize로 수정해야 할듯
     const [rowsUser] = await connection.execute(`INSERT INTO USER(NICKNAME, PASSWORD) VALUES(?, ?)`, [nickname, hash]);
 
     res.json({
@@ -85,7 +85,8 @@ router.post("/index/join", async(req, res) => {
 router.post('/index/login', async(req, res) => {
     const nickname = req.body.nickname;
     const password = req.body.password;
-
+    
+    //이런 구문들을 schemas의 sequelize로 수정해야 할듯
     const [rows] = await connection.execute(`SELECT PASSWORD, NICKNAME FROM USER WHERE NICKNAME = ?`, [nickname]);
     
     //회원정보 없음
@@ -96,7 +97,6 @@ router.post('/index/login', async(req, res) => {
         });
         return;
     }
-
 
     const hash = rows[0].password;
 
@@ -119,3 +119,5 @@ router.post('/index/login', async(req, res) => {
     });
 
 });
+
+module.exports = router;
