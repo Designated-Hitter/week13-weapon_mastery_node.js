@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
     "mysql2": "^3.6.3",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.34.0",
+    "sqlite3": "^5.1.6"
   },
   "keywords": [],
   "devDependencies": {
