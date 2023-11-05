@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql2");
-const jwt = require(JsonWebToken);
+const jwt = require('jsonwebtoken');
 
 const Comment = require("../schemas/comment.js");
 

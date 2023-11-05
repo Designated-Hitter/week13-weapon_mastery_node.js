@@ -1,9 +1,9 @@
-const mysql = require('mysql2');
+// const mysql = require('mysql2');
 const express = require('express');
-const axios = require('axios');
+// const axios = require('axios');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
-const jwt = require(JsonWebToken);
+// const bcrypt = require('bcrypt');
+// const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.listen(3000, () => {
 });
 
 const connect = require("./schemas");
-connect();
+// connect();
 
 const router = require("./routes");
 
