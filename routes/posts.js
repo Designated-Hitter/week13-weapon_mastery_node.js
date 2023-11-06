@@ -33,8 +33,8 @@ router.get("/posts:page_num", async (req, res) => {
     res.json({
         success: true,
         result: rowsGetAllPost
-    })
-})
+    });
+});
 
 //게시글 조회 API
 router.get("/posts/post", async (req, res) => {
@@ -45,7 +45,7 @@ router.get("/posts/post", async (req, res) => {
         success: true,
         result: rowsPost
     });
-})
+});
 
 //게시글 작성 API
 router.post("/posts/write", async(req, res) => {
@@ -70,9 +70,9 @@ router.post("/posts/write", async(req, res) => {
     res.json({
         success: true,
         message: "게시글이 등록되었습니다."
-    })
+    });
 
-})
+});
 
 
 //게시글 수정 API
@@ -88,7 +88,7 @@ router.put("/posts/update", async(req, res) => {
         res.json({
             success: false,
             error: "로그인이 필요합니다."
-        })
+        });
         return;
     }
 
@@ -100,7 +100,7 @@ router.put("/posts/update", async(req, res) => {
         res.json({
             success: false,
             error: "게시글을 수정할 수 없습니다."
-        })
+        });
         return;
     } 
 
@@ -110,10 +110,10 @@ router.put("/posts/update", async(req, res) => {
         res.json({
             success: true,
             message: "게시글 수정이 완료되었습니다."
-        })
+        });
     }
 
-})
+});
 
 //게시글 삭제 API
 router.delete("/posts/delete", async(req, res) => {
@@ -126,7 +126,7 @@ router.delete("/posts/delete", async(req, res) => {
         res.json({
             success: false,
             error: "로그인이 필요합니다."
-        })
+        });
         return;
     }
 
@@ -138,7 +138,7 @@ router.delete("/posts/delete", async(req, res) => {
         res.json({
             success: false,
             error: "게시글을 삭제할 수 없습니다."
-        })
+        });
         return;
     }
 
@@ -147,7 +147,7 @@ router.delete("/posts/delete", async(req, res) => {
     res.json({
         success: true,
         message: "게시글 삭제가 완료되었습니다."
-    })
-}) 
+    });
+});
 
 module.exports = router;

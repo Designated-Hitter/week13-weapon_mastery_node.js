@@ -32,7 +32,7 @@ router.get('/likes/number:post_id', async(req, res) => {
             result: 0
         });
     }
-})
+});
 
 //like 반영 API
 router.post('/likes', async (req, res) => {

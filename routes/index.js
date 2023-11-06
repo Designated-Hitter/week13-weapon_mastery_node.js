@@ -43,7 +43,7 @@ router.post("/index/join", async(req, res) => {
         res.json({
             success: false,
             error: "닉네임은 최소 3자 이상, 영문 소문자 또는 대문자, 숫자로만 이루어져야 합니다."
-        })
+        });
         return;
     }
 
@@ -52,7 +52,7 @@ router.post("/index/join", async(req, res) => {
         res.json({
             success: false,
             error: "비밀번호는 4자 이상이어야 합니다."
-        })
+        });
         return;
     }
 
@@ -60,7 +60,7 @@ router.post("/index/join", async(req, res) => {
         res.json({
             success: false,
             error: "비밀번호와 닉네임은 달라야 합니다."
-        })
+        });
         return;
     }
 
@@ -68,7 +68,7 @@ router.post("/index/join", async(req, res) => {
         res.json({
             success: false,
             error: "비밀번호와 비밀번호 확인이 일치하지 않습니다."
-        })
+        });
         return;
     }
 
@@ -113,6 +113,7 @@ router.post('/index/login', async(req, res) => {
         });
         return;
     }
+    
     //token 발급
     const token = jwt.sign({
         "nickname": nickname,
