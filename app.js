@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('3000 포트로 서버가 열렸습니다.');
+    console.log(`${port} 포트로 서버가 열렸습니다.`);
 });
 
 // const connect = require("./schemas");
