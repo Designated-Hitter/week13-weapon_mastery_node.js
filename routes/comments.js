@@ -3,7 +3,7 @@ const router = express.Router();
 const mysql = require("mysql2");
 const jwt = require('jsonwebtoken');
 
-const Comment = require("../schemas/comment.js");
+// const Comment = require("../schemas/comment.js");
 
 const pool = mysql.createPool({
     host: 'localhost',

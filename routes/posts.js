@@ -3,7 +3,7 @@ const router = express.Router();
 const mysql = require("mysql2");
 const jwt = require('jsonwebtoken');
 
-const Post = require("../schemas/post.js");
+// const Post = require("../schemas/post.js");
 
 const pool = mysql.createPool({
     host: 'localhost',
@@ -18,8 +18,17 @@ const pool = mysql.createPool({
 const connection = pool.promise();
 
 //전체 게시글 조회 API
-router.get("/posts/", async (req, res) => {
-    const [rowsGetAllPost] = await connection.execute(`SELECT * FROM POSTS`);
+router.get("/posts:page_num", async (req, res) => {
+    const page = parseInt(req.params.page_num);
+    const pageSize = 20;
+
+    if (!page || page < 1) {
+        page = 1;
+    }
+
+    const offset = (page - 1) * pageSize;
+
+    const [rowsGetAllPost] = await connection.execute(`SELECT * FROM POSTS ORDER BY created_at DESC LIMIT ?, ?`,[offset, pageSize]);
 
     res.json({
         success: true,

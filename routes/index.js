@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
-const Index = require("../schemas/index.js");
+// const Index = require("../schemas/index.js");
 
 const pool = mysql.createPool({
     host: 'localhost',
@@ -34,6 +34,7 @@ router.post("/index/join", async(req, res) => {
             success: false,
             error: "중복된 닉네임입니다."
         });
+        return;
     }
 
     //닉네임 조건 확인
@@ -43,6 +44,7 @@ router.post("/index/join", async(req, res) => {
             success: false,
             error: "닉네임은 최소 3자 이상, 영문 소문자 또는 대문자, 숫자로만 이루어져야 합니다."
         })
+        return;
     }
 
     //비밀번호 조건 확인
@@ -51,6 +53,7 @@ router.post("/index/join", async(req, res) => {
             success: false,
             error: "비밀번호는 4자 이상이어야 합니다."
         })
+        return;
     }
 
     if (password === nickname) {
@@ -58,6 +61,7 @@ router.post("/index/join", async(req, res) => {
             success: false,
             error: "비밀번호와 닉네임은 달라야 합니다."
         })
+        return;
     }
 
     if (password !== passwordCheck) {
@@ -65,6 +69,7 @@ router.post("/index/join", async(req, res) => {
             success: false,
             error: "비밀번호와 비밀번호 확인이 일치하지 않습니다."
         })
+        return;
     }
 
     //비밀번호 hashing
