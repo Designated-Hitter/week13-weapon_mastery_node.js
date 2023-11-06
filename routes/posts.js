@@ -140,3 +140,5 @@ router.delete("/posts/delete", async(req, res) => {
         message: "게시글 삭제가 완료되었습니다."
     })
 }) 
+
+module.exports = router;
